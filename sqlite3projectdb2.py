@@ -45,6 +45,9 @@ def reg():
     global name
     name = input('Login: ')
     money = int(input('Yor cahs: '))
+    if money < 2500:
+        print('У вас не достаточно средств!')
+        exit()
     cursor.execute("SELECT user FROM users WHERE user = (?)", [name])
     if cursor.fetchone() is None:
         cursor.execute("INSERT INTO users(user,money) VALUES (?,?)", [name, money])
@@ -79,15 +82,3 @@ def func_fora():
                 sleep(3)
                 print()
 reg()
-
-
-
-
-
-
-
-
-
-
-
-
